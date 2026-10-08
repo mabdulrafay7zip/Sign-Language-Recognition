@@ -1,0 +1,6 @@
+# Dataset CSVs are large (~105 MB total) — fetch them with download_data.py
+data/*.csv
+
+.venv/
+__pycache__/
+*.pyc
