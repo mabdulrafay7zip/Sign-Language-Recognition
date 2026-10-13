@@ -86,6 +86,13 @@ python predict_test.py           # add a number, e.g. 16, for more images
 python webcam_demo.py            # press Q to quit
 ```
 
+## Interpreting the webcam demo output
+
+- The window shows `Letter: X (NN%)` at the top: `X` is the predicted letter for the current frame and `NN%` is the model's confidence for that frame (shown when the model supports `predict_proba`).
+- That confidence is **not** the test accuracy: 83.71% was measured once over all 7,172 test images, while the webcam percentage changes frame by frame as your hand, lighting, or position in the box changes.
+- If the letter flickers or confidence stays low, re-centre your hand inside the on-screen box and hold the sign still for a moment before reading too much into a single frame.
+- Press `Q` or `Esc` to quit the demo.
+
 ## Webcam demo — honest limitations
 
 The model was trained on clean, centred Sign MNIST images with dark backgrounds. A raw webcam feed looks quite different (lighting, skin tones, busy backgrounds), so live predictions will be noticeably less accurate than the 83.71% test score. A plain dark background and good lighting help. Improving this (hand detection/cropping, background removal, training on real photos) is future work, not a solved part of this project.
