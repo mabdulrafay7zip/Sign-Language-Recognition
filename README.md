@@ -93,6 +93,13 @@ python webcam_demo.py            # press Q to quit
 - If the letter flickers or confidence stays low, re-centre your hand inside the on-screen box and hold the sign still for a moment before reading too much into a single frame.
 - Press `Q` or `Esc` to quit the demo.
 
+## Interpreting the predict_test.py output
+
+- The script prints one line per image: `[OK ]` when the prediction matches the true letter and `[MISS]` when it does not, in the form `true = X  predicted = Y`.
+- The final line, `X/N correct on this sample (NN.N%)`, covers only the first N test images (16 by default — pass a number, e.g. `python predict_test.py 32`, to change it). A small sample like this will usually differ from the model's 83.71% accuracy over the full 7,172-image test set, so do not read it as a new overall score.
+- It also saves a labelled grid to `results/prediction_demo.png`: each tile is titled `true -> predicted`, in green when correct and red when wrong, which makes the model's confusions easy to spot.
+- The script needs the trained model first: if `models/best_model.joblib` is missing it exits with `Model not found — run train.py first.`
+
 ## Webcam demo — honest limitations
 
 The model was trained on clean, centred Sign MNIST images with dark backgrounds. A raw webcam feed looks quite different (lighting, skin tones, busy backgrounds), so live predictions will be noticeably less accurate than the 83.71% test score. A plain dark background and good lighting help. Improving this (hand detection/cropping, background removal, training on real photos) is future work, not a solved part of this project.
