@@ -104,7 +104,7 @@ python webcam_demo.py            # press Q to quit
 
 - Run `python train.py` only after `python download_data.py`: train.py loads the data first, so without the CSVs in `data/` it cannot start training.
 - The first line reports the loaded data, in the form `train (27455, 784), test (7172, 784), classes 24`.
-- It then prints one line per model, in the form `Name: test accuracy NN.NN%  (Ns)`, for the SVM, the Random Forest, and the MLP. The percentage is accuracy on the held-outtest set, and the number in parentheses is how many seconds that model took.
+- It then prints one line per model, in the form `Name: test accuracy NN.NN%  (Ns)`, for the SVM, the Random Forest, and the MLP. The percentage is accuracy on the held-out test set, and the number in parentheses is how many seconds that model took.
 - Next comes `Best model: Name — NN.NN%`. The best model is whichever of the three scored highest on the test set in that run.
 - The script then prints the full results text and saves it to `results/results.txt`, including the accuracy of each model and the per-class classification report for the best model only.
 - It also saves `results/accuracy_comparison.png`, `results/confusion_matrix.png`, `results/sample_predictions.png`, `models/best_model.joblib`, and `models/best_model_name.txt`.
