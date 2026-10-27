@@ -113,9 +113,10 @@ python webcam_demo.py            # press Q to quit
 
 - Run `python download_data.py` before `python train.py`: it fetches the two dataset CSVs into `data/` — `sign_mnist_train.csv` (27,455 rows) and `sign_mnist_test.csv` (7,172 rows) — which are not included in this repository.
 - For each file it prints `downloading <url> ...` and then `saved <path> (NN.N MB)` once that file is written; wait for both "saved" lines before running train.py.
-- - On a repeat run, a file that is already in `data/` prints `already present: <path>` and is skipped, not re-downloaded — so re-running the script is safe and does not waste a second download.
-    - - The files come from the public GitHub mirror named in the script; the original dataset is Kaggle's Sign Language MNIST, and each row is `label, pixel1 ... pixel784` (a 28x28 grayscale image, values 0-255).
-             ## Webcam demo — honest limitations
+- On a repeat run, a file that is already in `data/` prints `already present: <path>` and is skipped, not re-downloaded — so re-running the script is safe and does not waste a second download.
+- The files come from the public GitHub mirror named in the script; the original dataset is Kaggle's Sign Language MNIST, and each row is `label, pixel1 ... pixel784` (a 28x28 grayscale image, values 0-255).
+
+## Webcam demo — honest limitations
 
 The model was trained on clean, centred Sign MNIST images with dark backgrounds. A raw webcam feed looks quite different (lighting, skin tones, busy backgrounds), so live predictions will be noticeably less accurate than the 83.71% test score. A plain dark background and good lighting help. Improving this (hand detection/cropping, background removal, training on real photos) is future work, not a solved part of this project.
 
